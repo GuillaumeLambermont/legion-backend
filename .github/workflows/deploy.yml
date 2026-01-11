@@ -12,7 +12,6 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
-    environment: dev
     permissions:
       contents: read
       packages: write
@@ -50,6 +49,7 @@ jobs:
   deploy:
     needs: build-and-push
     runs-on: ubuntu-latest
+    environment: dev
     steps:
       - name: SSH and Redeploy
         uses: and-fm/cloudflared-ssh-action@v3
