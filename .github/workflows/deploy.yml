@@ -12,6 +12,7 @@ permissions:
 jobs:
   build-and-push:
     runs-on: ubuntu-latest
+    environment: dev
     permissions:
       contents: read
       packages: write
