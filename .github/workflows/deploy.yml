@@ -44,7 +44,7 @@ jobs:
           context: .
           push: true
           # Note the lowercase username requirement for GHCR
-          tags: ghcr.io/guillaume.lambermont/legion-backend:latest
+          tags: ghcr.io/guillaumelambermont/legion-backend:latest
 
   deploy:
     needs: build-and-push
