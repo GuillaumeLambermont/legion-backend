@@ -8,7 +8,7 @@ USER springuser
 WORKDIR /app
 
 # Copy the jar from your target folder
-COPY legion-0.0.1.jar app.jar
+COPY legion-0.0.1-SNAPSHOT.jar app.jar
 
 # Expose Spring Boot's default port
 EXPOSE 8080
