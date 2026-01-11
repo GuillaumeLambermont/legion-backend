@@ -1,4 +1,4 @@
-mvn #Stage 1: Runtime
+# Stage 1: Runtime
 FROM eclipse-temurin:25-jre-noble
 
 # Create a non-root user for better security in your homelab
