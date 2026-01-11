@@ -1,2 +1,24 @@
 /mvnw text eol=lf
 *.cmd text eol=crlf
+
+s file
+target/
+*.class
+
+# Log files
+*.log
+
+# Package Files #
+*.jar
+*.war
+
+# Virtualized environments
+.docker/
+
+# IDE Support
+.idea/
+*.iml
+.vscode/
+
+# Local configuration (if sensitive)
+application-local.properties
