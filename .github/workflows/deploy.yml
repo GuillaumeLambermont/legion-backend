@@ -35,7 +35,7 @@ jobs:
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
-          username: GuillaumeLambermont
+          username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Build and Push Docker Image
@@ -63,7 +63,7 @@ jobs:
           commands: |
             cd ~/myapp
             # Log in to GHCR on the server so it can pull the image
-            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u GuillaumeLambermont --password-stdin
+            echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
             docker compose pull
             docker compose up -d
             docker image prune -f
