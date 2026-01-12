@@ -59,6 +59,7 @@ jobs:
           private_key_value: ${{ secrets.SSH_PRIVATE_KEY }}
           service_token_id: ${{ secrets.CF_CLIENT_ID }}
           service_token_secret: ${{ secrets.CF_CLIENT_SECRET }}
+          private_key_filename: deploy_key
           commands: |
             cd ~/myapp
             # Log in to GHCR on the server so it can pull the image
