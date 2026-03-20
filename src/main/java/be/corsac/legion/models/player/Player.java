@@ -7,9 +7,7 @@ import jakarta.persistence.*;
 public class Player {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "players_seq_generator")
-    @SequenceGenerator(name = "players_seq_generator", sequenceName = "players_seq", allocationSize = 1)
-    private Long id;
+    private String id;
 
     @Column(name = "username")
     private String username;
@@ -18,12 +16,13 @@ public class Player {
     private String email;
 
     public Player() {}
-    public Player(String username, String email) {
+    public Player(String playerId, String username, String email) {
+        this.id = playerId;
         this.username = username;
         this.email = email;
     }
 
-    public Long getId() {
+    public String getId() {
         return id;
     }
 

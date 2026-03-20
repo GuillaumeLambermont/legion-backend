@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: 20260319-1
+      author: guillaume
+      changes:
+        # 1. Drop the old auto-incrementing BIGINT column
+        - dropColumn:
+            tableName: players
+            columnName: id
+
+        # 2. Add the new id column as a VARCHAR(255) and make it the primary key again
+        - addColumn:
+            tableName: players
+            columns:
+              - column:
+                  name: id
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    nullable: false
