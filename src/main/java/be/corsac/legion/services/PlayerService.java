@@ -38,6 +38,7 @@ public class PlayerService {
         Optional<Player> playerIdDb = playerRepository.findById(keycloakId);
         if (playerIdDb.isEmpty()) {
             playerRepository.save(new Player(keycloakId, username, email));
+
         }
     }
 }
