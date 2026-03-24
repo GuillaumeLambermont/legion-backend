@@ -1,9 +1,6 @@
-package be.corsac.legion.mappers;
+package be.corsac.legion.players.playersDao;
 
-import be.corsac.legion.models.player.Player;
-import be.corsac.legion.models.player.playerDTOs.CreatePlayerDTO;
-import be.corsac.legion.models.player.playerDTOs.PlayerDTO;
-import be.corsac.legion.models.player.playerDTOs.PlayerIdDTO;
+import be.corsac.legion.players.Player;
 
 public class PlayerMapper {
 

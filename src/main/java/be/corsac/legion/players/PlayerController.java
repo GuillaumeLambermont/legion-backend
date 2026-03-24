@@ -1,11 +1,8 @@
-package be.corsac.legion.controllers;
+package be.corsac.legion.players;
 
-import be.corsac.legion.models.player.Player;
-import be.corsac.legion.models.player.playerDTOs.CreatePlayerDTO;
-import be.corsac.legion.models.player.playerDTOs.PlayerDTO;
-import be.corsac.legion.models.player.playerDTOs.PlayerIdDTO;
-import be.corsac.legion.repositories.PlayerRepository;
-import be.corsac.legion.services.PlayerService;
+import be.corsac.legion.players.playersDao.CreatePlayerDTO;
+import be.corsac.legion.players.playersDao.PlayerDTO;
+import be.corsac.legion.players.playersDao.PlayerIdDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;

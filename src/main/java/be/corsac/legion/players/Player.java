@@ -1,4 +1,4 @@
-package be.corsac.legion.models.player;
+package be.corsac.legion.players;
 
 import jakarta.persistence.*;
 

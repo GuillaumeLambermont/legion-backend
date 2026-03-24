@@ -1,6 +1,6 @@
 package be.corsac.legion.config;
 
-import be.corsac.legion.services.PlayerService;
+import be.corsac.legion.players.PlayerService;
 import org.springframework.core.convert.converter.Converter;
 import org.springframework.security.authentication.AbstractAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;

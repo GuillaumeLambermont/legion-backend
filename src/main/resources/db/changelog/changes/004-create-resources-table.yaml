@@ -1,0 +1,34 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-table-resources-v2
+      author: gemini
+      changes:
+        - createTable:
+            tableName: resources
+            columns:
+              - column:
+                  name: player_id
+                  type: VARCHAR(255)
+                  constraints:
+                    nullable: false
+                    primaryKey: true
+                    primaryKeyName: pk_resources
+                    foreignKeyName: fk_resources_player
+                    referencedTableName: players
+                    referencedColumnNames: id
+              - column:
+                  name: food_Amount
+                  type: FLOAT
+                  defaultValueNumeric: 0
+              - column:
+                  name: wood_Amount
+                  type: FLOAT
+                  defaultValueNumeric: 0
+              - column:
+                  name: stone_Amount
+                  type: FLOAT
+                  defaultValueNumeric: 0
+              - column:
+                  name: last_updated
+                  type: TIMESTAMP
+

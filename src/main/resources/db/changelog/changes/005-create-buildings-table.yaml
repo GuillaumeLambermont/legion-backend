@@ -1,0 +1,28 @@
+databaseChangeLog:
+  - changeSet:
+      id: create-player-buildings
+      author: guillaume
+      changes:
+        - createTable:
+            tableName: player_buildings
+            columns:
+              - column:
+                  name: player_id
+                  type: VARCHAR(255)
+                  constraints:
+                    primaryKey: true
+                    foreignKeyName: fk_buildings_player
+                    referencedTableName: players
+                    referencedColumnNames: id
+              - column:
+                  name: windmill_level
+                  type: INT
+                  defaultValueNumeric: 1
+              - column:
+                  name: lumberjack_level
+                  type: INT
+                  defaultValueNumeric: 1
+              - column:
+                  name: quarry_level
+                  type: INT
+                  defaultValueNumeric: 1

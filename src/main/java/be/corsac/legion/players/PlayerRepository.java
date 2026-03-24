@@ -1,7 +1,6 @@
-package be.corsac.legion.repositories;
+package be.corsac.legion.players;
 
 
-import be.corsac.legion.models.player.Player;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
