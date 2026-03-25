@@ -4,7 +4,7 @@ import be.corsac.legion.resources.Resources;
 
 public class ResourcesMapper {
 
-    public static Resources fromDto(CreateResourcesDTO createResourcesDto) {
+    public static Resources fromDTO(CreateResourcesDTO createResourcesDto) {
         return new Resources(
                 createResourcesDto.playerId(),
                 createResourcesDto.foodAmount(),
@@ -13,7 +13,7 @@ public class ResourcesMapper {
                 );
     }
 
-    public static ResourcesDTO toDto(Resources resources) {
+    public static ResourcesDTO toDTO(Resources resources) {
         return new ResourcesDTO(
                 resources.getPlayerId(),
                 resources.getFoodAmount(),

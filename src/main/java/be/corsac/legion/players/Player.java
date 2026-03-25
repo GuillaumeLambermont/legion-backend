@@ -1,8 +1,14 @@
 package be.corsac.legion.players;
 
+import be.corsac.legion.buildings.Buildings;
+import be.corsac.legion.resources.Resources;
 import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "players")
 public class Player {
 
@@ -15,6 +21,12 @@ public class Player {
     @Column(name = "email")
     private String email;
 
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Buildings buildings;
+
+    @OneToOne(mappedBy = "player", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private Resources resources;
+
     public Player() {}
     public Player(String playerId, String username, String email) {
         this.id = playerId;
@@ -22,15 +34,12 @@ public class Player {
         this.email = email;
     }
 
-    public String getId() {
-        return id;
-    }
+    // Inside Player.java
+    public void initializeNewPlayer() {
+        this.buildings = new Buildings();
+        this.buildings.setPlayer(this);
 
-    public String getUsername() {
-        return username;
-    }
-
-    public String getEmail() {
-        return email;
+        this.resources = new Resources();
+        this.resources.setPlayer(this);
     }
 }

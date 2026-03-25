@@ -3,18 +3,20 @@ package be.corsac.legion.resources;
 import be.corsac.legion.players.Player;
 import jakarta.persistence.*;
 import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 
 @Entity
 @Getter
+@Setter
 @Table(name = "resources")
 public class Resources {
 
     @Id
     private String playerId;
 
-    @OneToOne
+    @OneToOne(fetch = FetchType.LAZY)
     @MapsId
     @JoinColumn(name = "player_id")
     private Player player;
@@ -30,11 +32,18 @@ public class Resources {
 
     public Resources() {}
 
-    public Resources(Player player, float foodAmount, float woodAmount, float stoneAmount) {
-        this.player = player;
+    public Resources(String playerId, float foodAmount, float woodAmount, float stoneAmount) {
+        this.playerId = playerId;
         this.foodAmount = foodAmount;
         this.woodAmount = woodAmount;
         this.stoneAmount = stoneAmount;
+    }
+
+    public Resources(String playerId) {
+        this.playerId = playerId;
+        this.foodAmount = 0;
+        this.woodAmount = 0;
+        this.stoneAmount = 0;
     }
 
     public void addProduction(float foodAmount, float woodAmount, float stoneAmount) {

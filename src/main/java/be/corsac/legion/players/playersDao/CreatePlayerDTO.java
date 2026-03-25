@@ -1,4 +1,4 @@
 package be.corsac.legion.players.playersDao;
 
-public record CreatePlayerDTO(String id, String username, String email) {
+public record CreatePlayerDTO(String playerId, String username, String email) {
 }

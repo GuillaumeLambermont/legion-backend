@@ -5,7 +5,7 @@ import be.corsac.legion.players.Player;
 public class PlayerMapper {
 
     public static Player fromDTO(CreatePlayerDTO createPlayerDTO) {
-        return new Player(createPlayerDTO.id(), createPlayerDTO.username(), createPlayerDTO.email());
+        return new Player(createPlayerDTO.playerId(), createPlayerDTO.username(), createPlayerDTO.email());
     }
 
     public static PlayerDTO toDTO(Player player) {

@@ -1,20 +1,24 @@
 package be.corsac.legion.buildings;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import be.corsac.legion.buildings.buildingsDao.BuildingsDTO;
+import be.corsac.legion.buildings.buildingsDao.BuildingsMapper;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
 
 @Service
 public class BuildingsService {
 
-    @Autowired
-    private BuildingsRepository buildingsRepository;
+    private final BuildingsRepository buildingsRepository;
 
-    public Buildings getPlayerBuildings(String playerId) {
-        // Build no player data exception
-         return buildingsRepository.findByPlayerId(playerId).orElseThrow();
+    public BuildingsService(BuildingsRepository buildingsRepository) {
+        this.buildingsRepository = buildingsRepository;
     }
 
+    public BuildingsDTO getBuildings(String playerId) {
+        // Build no player data exception
+        return BuildingsMapper.toDTO(buildingsRepository.findByPlayerId(playerId).orElseThrow());
+    }
 
+    public BuildingsDTO createBuildings(String playerId) {
+        return BuildingsMapper.toDTO(buildingsRepository.save(new Buildings(playerId)));
+    }
 }

@@ -1,0 +1,20 @@
+databaseChangeLog:
+  - changeSet:
+      id: fix-resource-column-casing
+      author: guillaume
+      changes:
+        - renameColumn:
+            tableName: resources
+            oldColumnName: food_Amount
+            newColumnName: food_amount
+            columnDataType: FLOAT
+        - renameColumn:
+            tableName: resources
+            oldColumnName: wood_Amount
+            newColumnName: wood_amount
+            columnDataType: FLOAT
+        - renameColumn:
+            tableName: resources
+            oldColumnName: stone_Amount
+            newColumnName: stone_amount
+            columnDataType: FLOAT

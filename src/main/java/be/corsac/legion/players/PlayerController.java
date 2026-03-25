@@ -1,10 +1,7 @@
 package be.corsac.legion.players;
 
-import be.corsac.legion.players.playersDao.CreatePlayerDTO;
 import be.corsac.legion.players.playersDao.PlayerDTO;
 import be.corsac.legion.players.playersDao.PlayerIdDTO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.oauth2.jwt.Jwt;
@@ -18,15 +15,19 @@ import java.util.Map;
 @CrossOrigin(origins = "http://localhost:4200")
 public class PlayerController {
 
+    private PlayerService playerService;
+    private PlayerRepository playerRepository;
+
+    public PlayerController(PlayerService playerService, PlayerRepository playerRepository) {
+        this.playerService = playerService;
+        this.playerRepository = playerRepository;
+    }
+
     @GetMapping("/profile")
     public Map<String, Object> getUserClaims(@AuthenticationPrincipal Jwt jwt) {
         // 'jwt.getClaims()' contains all information inside the token
         return jwt.getClaims();
     }
-
-    @Autowired
-    private PlayerService playerService;
-    private PlayerRepository playerRepository;
 
     @GetMapping("/me")
     public Player getLoggedInPlayer(@AuthenticationPrincipal Jwt jwt) {
@@ -47,18 +48,20 @@ public class PlayerController {
 
     @GetMapping
     @PreAuthorize("hasRole('player')")
-    public List<Player> getAllPlayers() { return playerService.getAllPlayers(); }
+    public List<PlayerDTO> getAllPlayers() {
+        return playerService.getAllPlayers();
+    }
 
     @GetMapping(value = "/{id}", produces = "application/json")
     @PreAuthorize("hasRole('player')")
-    public Player getPlayerById(@PathVariable String id) {
+    public PlayerDTO getPlayerById(@PathVariable String id) {
         return playerService.getPlayerById(id);
     }
 
-    @PreAuthorize("hasRole('player')")
-    @PostMapping(consumes = "application/json", produces = "application/json")
-    @ResponseStatus(HttpStatus.CREATED)
-    public PlayerDTO createPlayer(@RequestBody CreatePlayerDTO createPlayerDTO) { return playerService.createPlayer(createPlayerDTO); }
+//    @PreAuthorize("hasRole('player')")
+//    @PostMapping(consumes = "application/json", produces = "application/json")
+//    @ResponseStatus(HttpStatus.CREATED)
+//    public PlayerDTO createPlayer(@RequestBody CreatePlayerDTO createPlayerDTO) throws Exception { return playerService.createPlayer(createPlayerDTO); }
 
     @PreAuthorize("hasRole('admin')")
     @DeleteMapping(value = "/{id}", produces = "application/json")

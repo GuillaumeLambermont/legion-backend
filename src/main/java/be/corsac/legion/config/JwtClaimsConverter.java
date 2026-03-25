@@ -28,7 +28,11 @@ public class JwtClaimsConverter implements Converter<Jwt, AbstractAuthentication
         String keycloakId = jwt.getSubject();
         String username = jwt.getClaimAsString("preferred_username");
         String email = jwt.getClaimAsString("email");
-        playerService.syncPlayer(keycloakId, username, email);
+        try {
+            playerService.syncPlayer(keycloakId, username, email);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
 
         var authorities = extractRealmRoles(jwt);
         return new JwtAuthenticationToken(jwt, authorities, getPrincipalFromClaim(jwt));
